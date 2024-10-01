@@ -32,3 +32,4 @@ Module({
         }),
     ]
 })
+export class DbModule {}
