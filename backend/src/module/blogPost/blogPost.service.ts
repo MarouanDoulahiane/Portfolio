@@ -16,15 +16,16 @@ export class BlogPostService {
 		return this.blogPostRepository.save(blogPost);
 	}
 
-	async findOne(id: number): Promise<BlogPost> {
-		return this.blogPostRepository.findOne({ where: { id } });
+	async findOne(id: number): Promise<BlogPost | null> {
+		const skill =  await this.blogPostRepository.findOne({ where: { id } });
+		return skill ?? null;
 	}
 
 	async findAll(): Promise<BlogPost[]> {
 		return this.blogPostRepository.find();
 	}
 
-	async update(id: number, updateBlogPostDto: CreateBlogPostDto): Promise<BlogPost> {
+	async update(id: number, updateBlogPostDto: Partial<CreateBlogPostDto>): Promise<BlogPost> {
 		await this.blogPostRepository.update(id, updateBlogPostDto);
 		return this.findOne(id);
 	}

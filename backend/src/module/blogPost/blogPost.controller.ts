@@ -22,12 +22,12 @@ export class BlogPostController {
 	}
 
 	@Put(':id')
-	update(@Param('id') id: string, @Body() updateBlogPostDto: CreateBlogPostDto) {
+	update(@Param('id') id: string, @Body() updateBlogPostDto: Partial<CreateBlogPostDto>) {
 		return this.blogPostService.update(+id, updateBlogPostDto);
 	}
 
 	@Delete(':id')
-	remove(@Param('id') id: string) {
+	delete(@Param('id') id: string) {
 		return this.blogPostService.delete(+id);
 	}
 }
