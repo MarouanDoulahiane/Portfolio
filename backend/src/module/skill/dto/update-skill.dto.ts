@@ -1,14 +1,13 @@
-import { IsEnum, IsNotEmpty, IsOptional, IsString, IsUrl } from "class-validator";
-import { Url } from "url";
+import { IsEnum, IsOptional, IsString, IsUrl } from "class-validator";
 import { SkillProficiencyLevel } from "../entity/skill.entity";
 
-export class CreateSkillDto {
+export class UpdateSkillDto {
 	@IsString()
-	@IsNotEmpty()
+	@IsOptional()
 	name: string;
 
 	@IsUrl()
-	@IsNotEmpty()
+	@IsOptional()
 	iconUrl: string;
 
 	@IsEnum(SkillProficiencyLevel, { message: 'proficiencyLevel must be one of BEGINNER, INTERMEDIATE, ADVANCED' })

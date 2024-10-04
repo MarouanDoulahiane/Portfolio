@@ -3,6 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { BlogPost } from "./entity/blogPost.entity";
 import { Repository } from "typeorm";
 import { CreateBlogPostDto } from "./dto/create-blogPost.dto";
+import { UpdateBlogPostDto } from "./dto/update-blogPost.dto";
 
 @Injectable()
 export class BlogPostService {
@@ -25,7 +26,7 @@ export class BlogPostService {
 		return this.blogPostRepository.find();
 	}
 
-	async update(id: number, updateBlogPostDto: Partial<CreateBlogPostDto>): Promise<BlogPost> {
+	async update(id: number, updateBlogPostDto: UpdateBlogPostDto): Promise<BlogPost> {
 		await this.blogPostRepository.update(id, updateBlogPostDto);
 		return this.findOne(id);
 	}

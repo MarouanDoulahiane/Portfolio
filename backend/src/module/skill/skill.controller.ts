@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
-import { CreateSkillDto } from "./dto/skill.dto";
 import { SkillService } from "./skill.service";
+import { UpdateSkillDto } from "./dto/update-skill.dto";
+import { CreateSkillDto } from "./dto/create-skill.dto";
 
 @Controller('skill')
 export class SkillController {
@@ -22,7 +23,7 @@ export class SkillController {
 	}
 
 	@Put(':id')
-	update(@Param('id') id: string, @Body() updateSkillDto: Partial<CreateSkillDto>) {
+	update(@Param('id') id: string, @Body() updateSkillDto: UpdateSkillDto) {
 		console.debug(updateSkillDto);
 		return this.skillService.update(+id, updateSkillDto);
 	}

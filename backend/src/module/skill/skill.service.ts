@@ -2,7 +2,8 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Skill } from "./entity/skill.entity";
 import { Repository } from "typeorm";
-import { CreateSkillDto } from "./dto/skill.dto";
+import { UpdateSkillDto } from "./dto/update-skill.dto";
+import { CreateSkillDto } from "./dto/create-skill.dto";
 
 @Injectable()
 export class SkillService {
@@ -25,7 +26,7 @@ export class SkillService {
     return this.skillRepository.find();
   }
 
-  async update(id: number, updateSkillDto: Partial<CreateSkillDto>): Promise<Skill | null> {
+  async update(id: number, updateSkillDto: UpdateSkillDto): Promise<Skill | null> {
     await this.skillRepository.update(id, updateSkillDto);
     return this.findOne(id);  // Will return the updated entity or null if not found
   }

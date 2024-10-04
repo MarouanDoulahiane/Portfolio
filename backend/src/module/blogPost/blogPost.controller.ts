@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import { BlogPostService } from "./blogPost.service";
 import { CreateBlogPostDto } from "./dto/create-blogPost.dto";
+import { UpdateBlogPostDto } from "./dto/update-blogPost.dto";
 
 @Controller('blogPost')
 export class BlogPostController {
@@ -22,7 +23,7 @@ export class BlogPostController {
 	}
 
 	@Put(':id')
-	update(@Param('id') id: string, @Body() updateBlogPostDto: Partial<CreateBlogPostDto>) {
+	update(@Param('id') id: string, @Body() updateBlogPostDto: UpdateBlogPostDto) {
 		return this.blogPostService.update(+id, updateBlogPostDto);
 	}
 
