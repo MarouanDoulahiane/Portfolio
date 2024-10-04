@@ -9,7 +9,7 @@ export class Project {
 	title: string;
 
 	@Column({ type: 'text' })
-	desciption: string;
+	description: string;
 
 	@Column()
 	showCaseUrl: string;

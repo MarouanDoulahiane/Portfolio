@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { join } from "path";
 import { BlogPost } from "src/module/blogPost/entity/blogPost.entity";
+import { Project } from "src/module/project/entity/project.entity";
 import { Skill } from "src/module/skill/entity/skill.entity";
 
 @Module({
@@ -23,7 +24,7 @@ import { Skill } from "src/module/skill/entity/skill.entity";
               username: configService.getOrThrow<string>('DB_USERNAME'),
               password: configService.getOrThrow<string>('DB_PASSWORD'),
               database: configService.getOrThrow<string>('DB_DATABASE'),
-              entities: [BlogPost, Skill],
+              entities: [BlogPost, Skill, Project],
               synchronize: isDev, // Auto-sync only in development, avoid in production
               logging: isDev ? 'all' : false, // Enable logging in dev
               ssl: !isDev, // Use SSL in production
